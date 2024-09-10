@@ -24,7 +24,7 @@ class DataTransformation:
         '''
         this function is responsible for data transformation'''
         try:
-            numerical_columns=['math score', 'reading score', 'writing score']
+            numerical_columns=[ 'reading score', 'writing score']
             categorical_columns=['gender',
                 'race/ethnicity', 
                 'parental level of education', 
@@ -43,7 +43,7 @@ class DataTransformation:
                 steps=[
                     ('imputer',SimpleImputer(strategy='most_frequent')),
                     ('onehot',OneHotEncoder()),
-                    ('scaler',StandardScaler())
+                    ('scaler',StandardScaler(with_mean=False))
                 ]
             )
             logging.info(f'Numeric Columns {numerical_columns}')
